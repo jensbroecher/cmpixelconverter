@@ -1,0 +1,75 @@
+@charset "utf-8";
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	background-color: #D6D6D6;
+	padding: 0%;
+	margin: 0px;
+}
+#ausgabefeld {
+	color: #FFF;
+	background-color: #999;
+	height: 50px;
+	width: 100%;
+	position: absolute;
+}
+
+#content {
+	padding: 10px;
+	margin-top: 40px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+#ausgabefeldtext {
+	text-align: center;
+	padding-top: 16px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+
+.description {
+	font-size: 24px;
+	color: #666;
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 1px;
+}
+#actionbar {
+	background-color: #222222;
+	height: 40px;
+	width: 100%;
+}
+
+
+input, select {
+	display: block;
+	font-size: 16px;
+	color: #666;
+	background-color: #FFF;
+	width: 100%;
+	border-top-width: 9px;
+	border-right-width: 9px;
+	border-bottom-width: 9px;
+	border-left-width: 9px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	text-indent: 5px;
+}
+.dpi {
+	line-height: 26px;
+	color: #FFF;
+	background-color: #666666;
+	text-align: center;
+	height: 26px;
+	margin-top: 2px;
+}
+
+select {
+	width: 100%;
+	}
