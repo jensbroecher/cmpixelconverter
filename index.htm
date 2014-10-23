@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+var chkZ;
+
+function calc()
+{
+ // Eingaben
+ var imgw = parseFloat(document.getElementById('inp_width').value.replace(/\,/g, "."));
+ var imgh = parseFloat(document.getElementById('inp_height').value.replace(/\,/g, "."));
+ var sdpi = parseFloat(document.getElementById('inp_dpi').value.replace(/\,/g, "."));
+ var type = document.getElementById('convert_type').value;
+ // Eingabencheck
+ checkZahl(imgw,imgh,sdpi);
+ var width = 0;
+ var height = 0;
+ var px_w = 0;
+ var px_h = 0;
+ // Berechnung
+    if (type == "a" && chkZ == 1) // Umwandlung Pixel in cm
+    {
+        width = imgw/sdpi*2.54;
+        height = imgh/sdpi*2.54;
+        
+        var cm_w = Math.round(width*100) / 100;
+        var cm_h = Math.round(height*100) / 100;
+        var result = cm_w + " x " + cm_h + " cm";
+        printErr("");
+        print1(result);
+    }
+    if (type == "b" && chkZ == 1) // Umwandlung cm in Pixel
+    {
+        width = imgw/2.54*sdpi;
+        height = imgh/2.54*sdpi;
+       
+        var px_w = Math.ceil(width);
+        var px_h = Math.ceil(height);
+        var result = px_w + " x " + px_h + " px"
+        printErr("");
+        print1(result);
+    }
+}
+
+
+function checkZahl(imgw,imgh,sdpi)
+{
+    chkZ = 1;
+    if (isNaN(imgw) && isNaN(imgh) && isNaN(sdpi))
+	{
+	 print1("");
+	 printErr("Breite, Höhe und DPI-Wert eingeben!");
+     chkZ = 0;
+     return chkZ;
+	}
+	if (isNaN(imgw) && isNaN(imgh))
+	{
+	 printErr("Breite und Höhe eingeben!");
+	 print1("");
+     chkZ = 0;
+     return chkZ;
+	}
+	if (isNaN(imgw) && isNaN(sdpi))
+	{
+	 print1("");
+	 printErr("Breite und DPI-Wert eingeben!");
+     chkZ = 0;
+     return chkZ;
+	}
+	if (isNaN(imgh) && isNaN(sdpi))
+	{
+     print1("");
+	 printErr("Höhe und DPI-Wert eingeben!");
+     chkZ = 0;
+     return chkZ;
+	}
+	if (isNaN(imgw))
+	{
+     print1("");
+	 printErr("Breite des Bildes eingeben!");
+     chkZ = 0;
+     return chkZ;
+	}
+	if (isNaN(imgh))
+	{
+	 print1("");
+	 printErr("Höhe des Bildes eingeben!");
+     chkZ = 0;
+     return chkZ;
+	}
+	if (isNaN(sdpi))
+	{
+	 print1("");
+	 printErr("DPI-Wert des Bildes eingeben!");
+     chkZ = 0;
+     return chkZ;
+	}
+}
+
+
+
+function loesch() // Löschen
+{
+ window.location.reload();
+}
+
+
+
+function print1(x) // Ausgabe Ergebnis
+{
+    var ausgabefeld = document.getElementById("output");
+    ausgabefeld.removeChild(ausgabefeld.lastChild);
+    ausgabefeld.appendChild(document.createTextNode(x));
+}
+
+
+function printErr(x) // Ausgabe Fehlermeldung
+{
+    var ausgabefeld = document.getElementById("ausgabe_fehler");
+    ausgabefeld.removeChild(ausgabefeld.lastChild);
+    ausgabefeld.appendChild(document.createTextNode(x));
+}
+</script>
+
+<link href="cm2px.css" rel="stylesheet" type="text/css">
+<link href="animate.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="actionbar"></div>
+
+
+<div id="ausgabefeld">
+
+<div id="ausgabefeldtext">
+
+<div id="ausgabe_fehler">&nbsp;</div>
+
+<div id="output">&nbsp;</div>
+
+</div>
+
+</div>
+
+<div id="content">
+
+<span class="description">Bildbreite</span>
+<input type="number" id="inp_width" size="6" maxlength="10" onChange="calc()" onKeyUp="calc()" />
+
+<span class="description">Bildhöhe</span>
+<input type="number" id="inp_height" size="6" maxlength="10" onChange="calc()" onKeyUp="calc()" />
+
+<span class="description">Maßeinheit</span>
+<select name="convert_type" id="convert_type" onChange="calc()">
+    <option selected="" value="b">cm</option>
+    <option value="a">Pixel</option>
+</select>
+
+<span class="description">Bildauflösung</span>
+<input style="width:85%;float:left;" type="number" id="inp_dpi" value="300" size="6" onChange="calc()" />
+<div class="dpi" style="width:15%;float:left;">dpi</div>
+
+
+
+</div>
+
+</body></html>
